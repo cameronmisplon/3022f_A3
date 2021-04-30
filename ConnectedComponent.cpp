@@ -3,20 +3,20 @@
 
 namespace MSPCAM001
 {
-	CONNECTEDCOMPONENT::ConnectedComponent() : pixelCount(0), identifier(0), coordinates()
+	CONNECTEDCOMPONENT::ConnectedComponent() : pixelCount(0), identifier(0), coordinates(0)
 	{}
 
 	CONNECTEDCOMPONENT::~ConnectedComponent()
 	{}
 
-	CONNECTEDCOMPONENT::ConnectedComponent(const ConnectedComponent & rhs) : pixelCount(rhs.pixelCount), identifier(rhs.identifier) coordinates()
+	CONNECTEDCOMPONENT::ConnectedComponent(const ConnectedComponent & rhs) : pixelCount(rhs.pixelCount), identifier(rhs.identifier), coordinates(0)
 	{
 		for( int i=0; i< rhs.coordinates.size(); ++i){
 			coordinates.push_back(rhs.coordinates[i]);
 		}
 	}
 	CONNECTEDCOMPONENT & CONNECTEDCOMPONENT::operator=(const CONNECTEDCOMPONENT & rhs){
-		if (this !=rhs){
+		if (this !=&rhs){
 			this->pixelCount = rhs.pixelCount;
 			this->identifier = rhs.identifier;
 			if((this->coordinates).size() != 0){
@@ -51,10 +51,10 @@ namespace MSPCAM001
 	void CONNECTEDCOMPONENT::increment(){
 		++pixelCount;
 	}
-	int CONNECTEDCOMPONENT::getPixelCount(){
+	int CONNECTEDCOMPONENT::getPixelCount() const{
 		return pixelCount;
 	}
-	int CONNECTEDCOMPONENT::getIdentifier(){
+	int CONNECTEDCOMPONENT::getIdentifier() const{
 		return identifier;
 	}
 	std::vector< std::pair<int,int> > CONNECTEDCOMPONENT::getCoordinates() const{

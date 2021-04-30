@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 {
 	MSPCAM001::PGMimageProcessor image(argv[argc-1]);
 	image.readImage();
-	unsigned char threshold = 128
+	unsigned char threshold = 128;
 	int minValidSize = 3;
 	int maxValidSize = image.getMaxSize();
 	int componentCount = 0;
@@ -19,13 +19,13 @@ int main(int argc, char* argv[])
 		std::string option = std::string(argv[i]);
 		if (option.compare("-s"))
 		{
-			minValidSize = std::stoi(std::string(argv[i+1]);
-			maxValidSize = std::stoi(std::string(argv[i+2]);
+			minValidSize = std::stoi(std::string(argv[i+1]));
+			maxValidSize = std::stoi(std::string(argv[i+2]));
 			i = i+3;
 		}
 		else if(option.compare("-t"))
 		{
-			threshold = static_cast<unsigned char>(argv[i+1]);
+			threshold = static_cast<unsigned char>((*(argv[i+1])));
 			i=i+2;
 		}
 		else if(option.compare("-p"))
@@ -47,17 +47,17 @@ int main(int argc, char* argv[])
 	if ( minValidSize < image.getMaxSize() && static_cast<float>(threshold) > 0 && static_cast<float>(threshold) <255 && minValidSize>0 && maxValidSize>=minValidSize && maxValidSize <image.getMaxSize())
 	{
 		image.extractComponents(threshold, minValidSize);
-		componentCount = image.filterComponents(minValidSize, maxValidSize);
+		componentCount = image.filterComponentsBySize(minValidSize, maxValidSize);
 		image.writeComponents(outFileName);
 	}
 	else
 	{
 		std::cout << "Either threshold, minValidSize or maxValidSize is out of bounds. Default values will be used." << std::endl;
-		unsigned char threshold = 128
+		unsigned char threshold = 128;
 		int minValidSize = 3;
 		int maxValidSize = image.getMaxSize();
 		image.extractComponents(threshold, minValidSize);
-		componentCount = image.filterComponents(minValidSize, maxValidSize);
+		componentCount = image.filterComponentsBySize(minValidSize, maxValidSize);
 		image.writeComponents(outFileName);
 	}
 	if(p)

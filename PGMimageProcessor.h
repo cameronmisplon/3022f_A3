@@ -28,12 +28,15 @@ namespace MSPCAM001
 		PGMimageProcessor(PGMimageProcessor && rhs);
 		PGMimageProcessor & operator=(const PGMimageProcessor & rhs);
 		PGMimageProcessor & operator=(PGMimageProcessor && rhs);
+		void readImage(void);
 		int extractComponents(unsigned char threshold, int minValidSize);
 		int filterComponentsBySize(int minSize, int maxSize);
 		bool writeComponents(const std::string & outFileName);
 		int getLargestSize(void) const;
 		int getSmallestSize(void) const;
+		int getMaxSize(void) const;
 		void printComponentData(const ConnectedComponent & theComponent) const;
-		void printAll() const;
+		void printAll(void) const;
 	};
 }
+#endif

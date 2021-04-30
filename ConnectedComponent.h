@@ -18,8 +18,8 @@ namespace MSPCAM001{
 		ConnectedComponent & operator=(const ConnectedComponent & rhs);
 		ConnectedComponent & operator=(ConnectedComponent && rhs);
 		void increment();
-		int getPixelCount();
-		int getIdentifier();
+		int getPixelCount() const;
+		int getIdentifier() const;
 		std::vector< std::pair<int,int> > getCoordinates() const;
 		void setIdentifier(const int identifier);
 		void add( std::pair<int, int> a);
