@@ -213,6 +213,7 @@ namespace MSPCAM001
 			if( (theComponent.getIdentifier() == components[i]->getIdentifier()) && (theComponent.getPixelCount() == components[i]->getPixelCount()) )
 			{
 				position = i;
+				break;
 			}
 		}
 		if (position != components.size())
