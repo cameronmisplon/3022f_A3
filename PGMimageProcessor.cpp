@@ -105,7 +105,6 @@ namespace MSPCAM001
 			float pixelvalue = static_cast<float>(pixels[i]);
 			pixels[i]=0;
 			if (pixelvalue >= static_cast<float>(threshold)){
-				std::cout << pixelvalue << " : starter" << std::endl;    //1
 				std::queue<int> queue1;
 				queue1.push(i);
 				while( queue1.size() > 0)
@@ -119,7 +118,6 @@ namespace MSPCAM001
 					{
 						if (static_cast<float>(pixels[arr[j]]) >= static_cast<float>(threshold))
 						{
-							std::cout << static_cast<float>(pixels[arr[j]]) << ": part of component" << std::endl;  //2
 							queue1.push(arr[j]);
 							pixels[arr[j]] = 0;
 						}

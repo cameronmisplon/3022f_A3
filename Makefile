@@ -8,5 +8,9 @@ PGMimageProcessor.o: PGMimageProcessor.cpp
 ConnectedComponent.o: ConnectedComponent.cpp
 	g++ -c ConnectedComponent.cpp -o ConnectedComponent.o -std=c++2a
 clean:
-	rm *.o findcomp.exe
-
+	rm *.o *.exe
+rununit:
+	g++ -c unit_tests.cpp -o unit_tests.o -std=c++2a
+	g++ PGMimageProcessor.o unit_tests.o -o unit_tests.exe
+	chmod 700 unit_tests.exe
+	./unit_tests.exe
